@@ -12,9 +12,25 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    // jar 包排除
+    compile.exclude group: 'cn.hutool', module: 'hutool-cron'
+    compile.exclude group: 'cn.hutool', module: 'hutool-db'
+    compile.exclude group: 'cn.hutool', module: 'hutool-log'
+    compile.exclude group: 'cn.hutool', module: 'hutool-poi'
+}
+
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //数据库相关
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.2.5'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.2'
+    implementation 'cn.hutool:hutool-all:5.5.8'
+    //lombok
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
 }
 
 test {

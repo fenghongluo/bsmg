@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:postgresql://127.0.0.1:5432/postgres
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+      initial-size: 5
+      min-idle: 10
+      validation-query: select 'x'
+      testWhileIdle: true
+      minEvictableIdleTimeMillis: 100
+      filters: stat,log4j,wall  #监控统计用的filter:stat 日志用的filter:log4j 防御sql注入的filter:wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
